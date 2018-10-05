@@ -1,0 +1,11 @@
+def solve (n):
+    "Solve the 16th problem."
+    res=0
+    L=list(str(2**n))
+    "The list(str(..)) return a list with the number into string type."
+    i=0
+    for i in range(len(L)) :
+        res+=int(L[i])
+    return res
+assert solve(15) == 26
+print (solve(1000))

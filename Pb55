@@ -1,0 +1,31 @@
+def invnombre (nbre):
+    nbrestr,i=str(nbre),0
+    if len(nbrestr)==1:return nbre
+    else:
+        nbreinv=nbrestr[-1]
+        for i in range(2,len(nbrestr)+1):nbreinv=nbreinv+nbrestr[-i]
+        return (int(nbreinv))
+
+def iteration (nbre): return nbre+invnombre(nbre)
+
+def test_palindrome(nbre):
+    if nbre==invnombre(nbre):return True
+    else : return False
+
+def test_lychrel(nbre):
+    i=0
+    nbre=iteration(nbre)
+    while not test_palindrome(nbre) and i<=50:
+        nbre=iteration(nbre)
+        i+=1
+    if i==51 :return True
+    else : return False
+
+def solve():
+    nbre,res=0,0
+    while nbre<=10000:
+        if test_lychrel(nbre):res+=1
+        nbre+=1
+    return res
+   
+print(solve())

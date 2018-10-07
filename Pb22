@@ -1,0 +1,34 @@
+def trilexico (f) :
+    "Tri lexicographique à partir d'un fichier de nom"
+    buffer =[]
+    for line in f:
+        buffer.append(line)
+    "Ici on obtient une liste de un élément"
+    doc=buffer[0].split(',')
+    doctri=sorted(doc)
+    return doctri
+
+def scorepn (nom) :
+    "Calcul du score du nom indépendament de sa place"
+    score = 0
+    nom1=nom.split('"')
+    for lettre in nom1 [1]:
+        score+=ord(lettre)-ord('A')+1
+    return score
+
+def scoretot (nomtrie):
+    """
+    Calcul du score total en prenant en compte la place.
+    L'utilisation d'un for n'est pas le plus rapide 
+    mais il marche bien.
+    """
+    res=0
+    i=0
+    for i in range(len(nomtrie)):
+        res+=scorepn(nomtrie[i])*(i+1)
+    return res  
+
+
+f=open('p022_names.txt','r')
+
+print(scoretot(trilexico(f)))
